@@ -1,4 +1,4 @@
-package main;
+package application;
 
 /**
  * Created by eloylp on 29/11/16.
