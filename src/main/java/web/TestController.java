@@ -17,7 +17,7 @@ class TestController {
     public Bill bill() {
 
         Bill bill = new Bill();
-        bill.setBillId(23);
+        bill.setId(23);
         bill.setTax("TAX");
 
         return bill;

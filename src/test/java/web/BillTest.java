@@ -24,8 +24,8 @@ public class BillTest {
     @Test
     public void getBillId() throws Exception {
 
-        this.bill.setBillId(12);
-        assertEquals(12, this.bill.getBillId());
+        this.bill.setId(12);
+        assertEquals(12, this.bill.getId());
 
     }
 
