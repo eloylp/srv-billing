@@ -1,5 +1,6 @@
-package application;
+package web;
 
+import model.Bill;
 import org.junit.Before;
 import org.junit.Test;
 

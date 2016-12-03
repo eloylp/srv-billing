@@ -1,9 +1,9 @@
-package application;
+package model;
 
 /**
  * Created by eloylp on 29/11/16.
  */
-class Bill {
+public class Bill {
 
     private int billId;
     private String tax;
@@ -12,7 +12,7 @@ class Bill {
         return billId;
     }
 
-    void setBillId(int billId) {
+    public void setBillId(int billId) {
         this.billId = billId;
     }
 
@@ -20,7 +20,7 @@ class Bill {
         return tax;
     }
 
-    void setTax(String tax) {
+    public void setTax(String tax) {
         this.tax = tax;
     }
 }
