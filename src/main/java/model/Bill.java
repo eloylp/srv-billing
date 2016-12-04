@@ -1,13 +1,16 @@
 package model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by eloylp on 29/11/16.
  */
 
+@Document
 public class Bill {
 
     @Id
@@ -22,8 +25,9 @@ public class Bill {
     private Date payment;
     private int vatRate;
     private double vatAmount;
-    private Exempt[] exempts;
-    private Product[] products;
+    private List<Exempt> exempts;
+    private List<Product> products;
+    private String description;
 
     public String getId() {
         return id;
@@ -105,19 +109,27 @@ public class Bill {
         this.vatAmount = vatAmount;
     }
 
-    public Exempt[] getExempts() {
+    public List<Exempt> getExempts() {
         return exempts;
     }
 
-    public void setExempts(Exempt[] exempts) {
+    public void setExempts(List<Exempt> exempts) {
         this.exempts = exempts;
     }
 
-    public Product[] getProducts() {
+    public List<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(Product[] products) {
+    public void setProducts(List<Product> products) {
         this.products = products;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
