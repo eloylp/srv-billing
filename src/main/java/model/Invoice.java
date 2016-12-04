@@ -11,7 +11,7 @@ import java.util.List;
  */
 
 @Document
-public class Bill {
+public class Invoice {
 
     @Id
     private String id;
