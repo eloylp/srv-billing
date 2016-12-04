@@ -4,15 +4,15 @@ package model;
  * Created by eloylp on 4/12/16.
  */
 
-public class Exempt {
+public class Discount {
 
-    private double discount;
+    private double quantity;
 
-    public double getDiscount() {
-        return discount;
+    public double getQuantity() {
+        return quantity;
     }
 
-    public void setDiscount(double discount) {
-        this.discount = discount;
+    public void setQuantity(double quantity) {
+        this.quantity = quantity;
     }
 }

@@ -25,7 +25,7 @@ public class Invoice {
     private Date payment;
     private int vatRate;
     private double vatAmount;
-    private List<Exempt> exempts;
+    private List<Discount> discounts;
     private List<Product> products;
     private String description;
 
@@ -109,12 +109,12 @@ public class Invoice {
         this.vatAmount = vatAmount;
     }
 
-    public List<Exempt> getExempts() {
-        return exempts;
+    public List<Discount> getDiscounts() {
+        return discounts;
     }
 
-    public void setExempts(List<Exempt> exempts) {
-        this.exempts = exempts;
+    public void setDiscounts(List<Discount> discounts) {
+        this.discounts = discounts;
     }
 
     public List<Product> getProducts() {

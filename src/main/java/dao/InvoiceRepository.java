@@ -1,4 +1,4 @@
-package repository;
+package dao;
 
 import model.Invoice;
 import org.springframework.data.mongodb.repository.MongoRepository;

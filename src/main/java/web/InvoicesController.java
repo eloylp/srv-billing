@@ -2,6 +2,7 @@ package web;
 
 
 import model.Invoice;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,11 +10,12 @@ import service.BillingService;
 
 
 @RestController
-class BillingController {
+class InvoicesController {
 
     private BillingService billingService;
-    
-    BillingController(BillingService billingService){
+
+    @Autowired
+    InvoicesController(BillingService billingService) {
         this.billingService = billingService;
 
     }
@@ -24,8 +26,6 @@ class BillingController {
         Invoice invoice = new Invoice();
 
         billingService.makeBillingOperation(invoice);
-
-
         return invoice;
     }
 

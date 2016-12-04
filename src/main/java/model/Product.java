@@ -13,6 +13,7 @@ public class Product {
     private double discount;
     private String description;
     private String family;
+    private Discount exempt;
 
     public int getId() {
         return id;
@@ -60,5 +61,13 @@ public class Product {
 
     public void setFamily(String family) {
         this.family = family;
+    }
+
+    public Discount getExempt() {
+        return exempt;
+    }
+
+    public void setExempt(Discount exempt) {
+        this.exempt = exempt;
     }
 }
