@@ -18,6 +18,7 @@ public class Invoice {
 
     private Date date;
     private int vatId;
+    private boolean preInvoice;
     private String supplierName;
     private String supplierAddress;
     private String CustomerName;
@@ -131,5 +132,13 @@ public class Invoice {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public boolean isPreInvoice() {
+        return preInvoice;
+    }
+
+    public void setPreInvoice(boolean preInvoice) {
+        this.preInvoice = preInvoice;
     }
 }

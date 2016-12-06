@@ -16,8 +16,8 @@ public class Company {
     private String address;
     private String email;
     private String telephone;
-    private Configuration configuration;
-    private long sequential;
+    private CompanyConfiguration configuration;
+    private int sequential;
 
     public String getName() {
         return name;
@@ -59,19 +59,19 @@ public class Company {
         this.telephone = telephone;
     }
 
-    public long getSequential() {
+    public int getSequential() {
         return sequential;
     }
 
-    public void setSequential(long sequential) {
+    public void setSequential(int sequential) {
         this.sequential = sequential;
     }
 
-    public Configuration getConfiguration() {
+    public CompanyConfiguration getConfiguration() {
         return configuration;
     }
 
-    public void setConfiguration(Configuration configuration) {
+    public void setConfiguration(CompanyConfiguration configuration) {
         this.configuration = configuration;
     }
 }
