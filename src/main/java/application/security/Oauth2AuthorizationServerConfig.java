@@ -45,10 +45,10 @@ public class Oauth2AuthorizationServerConfig extends AuthorizationServerConfigur
     @Override
     public void configure(final ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory().withClient("eloylpcli").secret("eloylpcli")
-                .authorizedGrantTypes("client_credentials", "refresh_token")
-                .scopes("read", "write", "invoice_review")
-                .accessTokenValiditySeconds(111092000); // 1285 days.
-                //.refreshTokenValiditySeconds(152592000); // client credentials has no refresh token.
+                .authorizedGrantTypes("password", "refresh_token")
+                .scopes("read", "write")
+                .accessTokenValiditySeconds(111092000) // 1285 days.
+                .refreshTokenValiditySeconds(152592000);
     }
 
 

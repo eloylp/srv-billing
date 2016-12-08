@@ -25,7 +25,7 @@ class InvoicesController {
         this.billingService = billingService;
 
     }
-    @PreAuthorize("#oauth2.hasScope('invoice_review')")
+    @PreAuthorize("#oauth2.hasScope('read')")
     @RequestMapping(value = "/invoices", method = RequestMethod.GET)
     public Invoice invoice() {
 
