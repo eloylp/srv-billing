@@ -8,7 +8,7 @@ import org.springframework.context.annotation.PropertySources;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"application", "web", "service"})
+@ComponentScan(basePackages = {"application", "web", "service", "security"})
 @EnableMongoRepositories(basePackages = {"dao"})
 @PropertySources({
         @PropertySource("classpath:/properties/application.properties"),

@@ -1,4 +1,4 @@
-package application.security;
+package security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -32,9 +34,12 @@ public class Oauth2AuthorizationServerConfig extends AuthorizationServerConfigur
     @Value("${srv.security.signing.key}")
     private String tokenSigningKey;
 
+    private final AuthenticationManager authenticationManager;
+
     @Autowired
-    @Qualifier("authenticationManagerBean")
-    private AuthenticationManager authenticationManager;
+    public Oauth2AuthorizationServerConfig(@Qualifier("authenticationManagerBean") AuthenticationManager authenticationManager) {
+        this.authenticationManager = authenticationManager;
+    }
 
     @Override
     public void configure(final AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
@@ -44,6 +49,8 @@ public class Oauth2AuthorizationServerConfig extends AuthorizationServerConfigur
 
     @Override
     public void configure(final ClientDetailsServiceConfigurer clients) throws Exception {
+
+
         clients.inMemory().withClient("eloylpcli").secret("eloylpcli")
                 .authorizedGrantTypes("password", "refresh_token")
                 .scopes("read", "write")

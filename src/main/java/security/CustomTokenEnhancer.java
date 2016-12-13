@@ -1,4 +1,4 @@
-package application.security;
+package security;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;

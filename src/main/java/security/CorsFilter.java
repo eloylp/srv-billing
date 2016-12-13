@@ -1,4 +1,4 @@
-package application.security;
+package security;
 
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
