@@ -3,6 +3,7 @@ package service;
 import dao.UserRepository;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 
@@ -12,6 +13,7 @@ public class UserService {
     private final UserRepository userRepository;
 
     @Autowired
+    @Lazy
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
