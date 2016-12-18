@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -39,13 +40,14 @@ public class Oauth2AuthorizationServerConfig extends AuthorizationServerConfigur
     private final AuthenticationManager authenticationManager;
 
     @Autowired
+    @Lazy
     public Oauth2AuthorizationServerConfig(ClientDetailService clientDetailsService, @Qualifier("authenticationManagerBean") AuthenticationManager authenticationManager) {
         this.clientDetailsService = clientDetailsService;
         this.authenticationManager = authenticationManager;
     }
 
     @Bean
-    public PasswordEncoder passwordEncoderBean(){
+    public PasswordEncoder passwordEncoderBean() {
         return new BCryptPasswordEncoder();
     }
 
@@ -79,6 +81,8 @@ public class Oauth2AuthorizationServerConfig extends AuthorizationServerConfigur
                 .tokenEnhancer(tokenEnhancerChain)
                 .accessTokenConverter(accessTokenConverter())
                 .authenticationManager(authenticationManager);
+
+        endpointsConfigurer.setClientDetailsService(clientDetailsService);
     }
 
     @Bean
@@ -104,7 +108,7 @@ public class Oauth2AuthorizationServerConfig extends AuthorizationServerConfigur
         DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
         defaultTokenServices.setTokenStore(tokenStore());
         defaultTokenServices.setSupportRefreshToken(true);
-        defaultTokenServices.setClientDetailsService(this.clientDetailsService);
+        defaultTokenServices.setClientDetailsService(clientDetailsService);
         return defaultTokenServices;
     }
 

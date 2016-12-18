@@ -10,7 +10,6 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 @SpringBootApplication
 @ComponentScan(basePackages = {"application", "web", "service", "security"})
-@ImportResource({"classpath*:spring-security-oauth2.xml"})
 @EnableMongoRepositories(basePackages = {"dao"})
 @PropertySources({
         @PropertySource("classpath:/properties/application.properties"),
