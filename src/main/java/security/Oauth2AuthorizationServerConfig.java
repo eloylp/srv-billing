@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -22,13 +21,10 @@ import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
-import service.ClientDetailService;
 
 import java.util.Arrays;
 
-/**
- * Created by eloylp on 6/12/16.
- */
+
 @Configuration
 @EnableAuthorizationServer
 public class Oauth2AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
@@ -36,13 +32,10 @@ public class Oauth2AuthorizationServerConfig extends AuthorizationServerConfigur
     @Value("${srv.security.signing.key}")
     private String tokenSigningKey;
 
-    private final ClientDetailService clientDetailsService;
     private final AuthenticationManager authenticationManager;
 
     @Autowired
-    @Lazy
-    public Oauth2AuthorizationServerConfig(ClientDetailService clientDetailsService, @Qualifier("authenticationManagerBean") AuthenticationManager authenticationManager) {
-        this.clientDetailsService = clientDetailsService;
+    public Oauth2AuthorizationServerConfig(@Qualifier("authenticationManagerBean") AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
     }
 
@@ -53,6 +46,7 @@ public class Oauth2AuthorizationServerConfig extends AuthorizationServerConfigur
 
     @Override
     public void configure(final AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
+
         oauthServer.tokenKeyAccess("permitAll()")
                 .checkTokenAccess("isAuthenticated()");
     }
@@ -82,7 +76,6 @@ public class Oauth2AuthorizationServerConfig extends AuthorizationServerConfigur
                 .accessTokenConverter(accessTokenConverter())
                 .authenticationManager(authenticationManager);
 
-        endpointsConfigurer.setClientDetailsService(clientDetailsService);
     }
 
     @Bean
@@ -108,7 +101,6 @@ public class Oauth2AuthorizationServerConfig extends AuthorizationServerConfigur
         DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
         defaultTokenServices.setTokenStore(tokenStore());
         defaultTokenServices.setSupportRefreshToken(true);
-        defaultTokenServices.setClientDetailsService(clientDetailsService);
         return defaultTokenServices;
     }
 
