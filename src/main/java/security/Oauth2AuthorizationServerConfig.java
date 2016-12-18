@@ -21,6 +21,7 @@ import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
+import service.ClientDetailService;
 
 import java.util.Arrays;
 
@@ -34,11 +35,18 @@ public class Oauth2AuthorizationServerConfig extends AuthorizationServerConfigur
     @Value("${srv.security.signing.key}")
     private String tokenSigningKey;
 
+    private final ClientDetailService clientDetailsService;
     private final AuthenticationManager authenticationManager;
 
     @Autowired
-    public Oauth2AuthorizationServerConfig(@Qualifier("authenticationManagerBean") AuthenticationManager authenticationManager) {
+    public Oauth2AuthorizationServerConfig(ClientDetailService clientDetailsService, @Qualifier("authenticationManagerBean") AuthenticationManager authenticationManager) {
+        this.clientDetailsService = clientDetailsService;
         this.authenticationManager = authenticationManager;
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoderBean(){
+        return new BCryptPasswordEncoder();
     }
 
     @Override
@@ -50,9 +58,8 @@ public class Oauth2AuthorizationServerConfig extends AuthorizationServerConfigur
     @Override
     public void configure(final ClientDetailsServiceConfigurer clients) throws Exception {
 
-
         clients.inMemory().withClient("eloylpcli").secret("eloylpcli")
-                .authorizedGrantTypes("password", "refresh_token")
+                .authorizedGrantTypes("client_credentials")
                 .scopes("read", "write")
                 .accessTokenValiditySeconds(111092000) // 1285 days.
                 .refreshTokenValiditySeconds(152592000);
@@ -97,6 +104,7 @@ public class Oauth2AuthorizationServerConfig extends AuthorizationServerConfigur
         DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
         defaultTokenServices.setTokenStore(tokenStore());
         defaultTokenServices.setSupportRefreshToken(true);
+        defaultTokenServices.setClientDetailsService(this.clientDetailsService);
         return defaultTokenServices;
     }
 

@@ -3,6 +3,7 @@ package service;
 import dao.ClientDetailRepository;
 import model.ClientDetail;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.provider.*;
@@ -20,7 +21,7 @@ public class ClientDetailService implements ClientDetailsService, ClientRegistra
 
     @Autowired
     @Lazy
-    public ClientDetailService(PasswordEncoder passwordEncoder, ClientDetailRepository clientDetailsRepository) {
+    public ClientDetailService(@Qualifier("passwordEncoderBean") PasswordEncoder passwordEncoder, ClientDetailRepository clientDetailsRepository) {
         this.passwordEncoder = passwordEncoder;
         this.clientDetailsRepository = clientDetailsRepository;
     }
