@@ -5,9 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import dao.InvoiceRepository;
 import org.springframework.stereotype.Component;
 
-/**
- * Created by eloylp on 4/12/16.
- */
 
 @Component
 public class BillingService {

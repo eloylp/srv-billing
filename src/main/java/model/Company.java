@@ -3,9 +3,6 @@ package model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-/**
- * Created by eloylp on 4/12/16.
- */
 @Document
 public class Company {
 
@@ -16,7 +13,6 @@ public class Company {
     private String address;
     private String email;
     private String telephone;
-    private CompanyConfiguration configuration;
     private int sequential;
 
     public String getName() {
@@ -67,11 +63,4 @@ public class Company {
         this.sequential = sequential;
     }
 
-    public CompanyConfiguration getConfiguration() {
-        return configuration;
-    }
-
-    public void setConfiguration(CompanyConfiguration configuration) {
-        this.configuration = configuration;
-    }
 }

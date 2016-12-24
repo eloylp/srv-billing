@@ -6,10 +6,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by eloylp on 29/11/16.
- */
-
 @Document
 public class Invoice {
 
