@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class CustomTokenEnhancer implements TokenEnhancer {
 
-    @Value("${srv.organization}")
+    @Value("${srv.token.organization}")
     private String organizationName;
 
     @Override
