@@ -11,6 +11,7 @@ public class Invoice {
 
     @Id
     private String id;
+    private String delegationId;
 
     private Date billingDate;
     private String vatId;
@@ -184,5 +185,13 @@ public class Invoice {
 
     public void setCustomerPhone(String customerPhone) {
         CustomerPhone = customerPhone;
+    }
+
+    public String getDelegationId() {
+        return delegationId;
+    }
+
+    public void setDelegationId(String delegationId) {
+        this.delegationId = delegationId;
     }
 }
