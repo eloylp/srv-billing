@@ -6,10 +6,9 @@ public class Product {
     private int id;
     private String name;
     private double price;
-    private double discount;
+    private Discount discount;
     private String description;
     private String family;
-    private Discount exempt;
 
     public int getId() {
         return id;
@@ -35,11 +34,11 @@ public class Product {
         this.price = price;
     }
 
-    public double getDiscount() {
+    public Discount getDiscount() {
         return discount;
     }
 
-    public void setDiscount(double discount) {
+    public void setDiscount(Discount discount) {
         this.discount = discount;
     }
 
@@ -59,11 +58,4 @@ public class Product {
         this.family = family;
     }
 
-    public Discount getExempt() {
-        return exempt;
-    }
-
-    public void setExempt(Discount exempt) {
-        this.exempt = exempt;
-    }
 }

@@ -12,19 +12,27 @@ public class Invoice {
     @Id
     private String id;
 
-    private Date date;
-    private int vatId;
-    private boolean preInvoice;
+    private Date billingDate;
+    private String vatId;
+
     private String supplierName;
     private String supplierAddress;
+    private String supplierIdentity;
+    private String supplierEmail;
+    private String supplierPhone;
+
     private String CustomerName;
     private String CustomerAddress;
+    private String CustomerIdentity;
+    private String CustomerEmail;
+    private String CustomerPhone;
+
     private Date payment;
-    private int vatRate;
-    private double vatAmount;
     private List<Discount> discounts;
     private List<Product> products;
     private String description;
+    private boolean preInvoice;
+    private List<Tax> taxes;
 
     public String getId() {
         return id;
@@ -34,19 +42,19 @@ public class Invoice {
         this.id = id;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getBillingDate() {
+        return billingDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setBillingDate(Date billingDate) {
+        this.billingDate = billingDate;
     }
 
-    public int getVatId() {
+    public String getVatId() {
         return vatId;
     }
 
-    public void setVatId(int vatId) {
+    public void setVatId(String vatId) {
         this.vatId = vatId;
     }
 
@@ -90,22 +98,6 @@ public class Invoice {
         this.payment = payment;
     }
 
-    public int getVatRate() {
-        return vatRate;
-    }
-
-    public void setVatRate(int vatRate) {
-        this.vatRate = vatRate;
-    }
-
-    public double getVatAmount() {
-        return vatAmount;
-    }
-
-    public void setVatAmount(double vatAmount) {
-        this.vatAmount = vatAmount;
-    }
-
     public List<Discount> getDiscounts() {
         return discounts;
     }
@@ -136,5 +128,61 @@ public class Invoice {
 
     public void setPreInvoice(boolean preInvoice) {
         this.preInvoice = preInvoice;
+    }
+
+    public String getSupplierIdentity() {
+        return supplierIdentity;
+    }
+
+    public void setSupplierIdentity(String supplierIdentity) {
+        this.supplierIdentity = supplierIdentity;
+    }
+
+    public String getSupplierEmail() {
+        return supplierEmail;
+    }
+
+    public void setSupplierEmail(String supplierEmail) {
+        this.supplierEmail = supplierEmail;
+    }
+
+    public String getSupplierPhone() {
+        return supplierPhone;
+    }
+
+    public void setSupplierPhone(String supplierPhone) {
+        this.supplierPhone = supplierPhone;
+    }
+
+    public String getCustomerIdentity() {
+        return CustomerIdentity;
+    }
+
+    public void setCustomerIdentity(String customerIdentity) {
+        CustomerIdentity = customerIdentity;
+    }
+
+    public List<Tax> getTaxes() {
+        return taxes;
+    }
+
+    public void setTaxes(List<Tax> taxes) {
+        this.taxes = taxes;
+    }
+
+    public String getCustomerEmail() {
+        return CustomerEmail;
+    }
+
+    public void setCustomerEmail(String customerEmail) {
+        CustomerEmail = customerEmail;
+    }
+
+    public String getCustomerPhone() {
+        return CustomerPhone;
+    }
+
+    public void setCustomerPhone(String customerPhone) {
+        CustomerPhone = customerPhone;
     }
 }

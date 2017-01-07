@@ -4,16 +4,17 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class Company {
+public class Delegation {
 
     @Id
     private String id;
+
     private String name;
     private String identity;
     private String address;
     private String email;
     private String telephone;
-    private int sequential;
+    private BillingSerie billingSerie;
 
     public String getName() {
         return name;
@@ -55,12 +56,11 @@ public class Company {
         this.telephone = telephone;
     }
 
-    public int getSequential() {
-        return sequential;
+    public BillingSerie getBillingSerie() {
+        return billingSerie;
     }
 
-    public void setSequential(int sequential) {
-        this.sequential = sequential;
+    public void setBillingSerie(BillingSerie billingSerie) {
+        this.billingSerie = billingSerie;
     }
-
 }

@@ -5,14 +5,14 @@ public class Discount {
 
     private String title;
 
-    private double quantity;
+    private double percent;
 
-    public double getQuantity() {
-        return quantity;
+    public double getPercent() {
+        return percent;
     }
 
-    public void setQuantity(double quantity) {
-        this.quantity = quantity;
+    public void setPercent(double percent) {
+        this.percent = percent;
     }
 
     public String getTitle() {
