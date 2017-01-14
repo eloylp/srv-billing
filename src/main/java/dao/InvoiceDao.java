@@ -4,8 +4,7 @@ import model.Invoice;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 
-public interface InvoiceRepository extends MongoRepository<Invoice, String> {
-
+public interface InvoiceDao extends MongoRepository<Invoice, String> {
 
 
 }

@@ -4,7 +4,7 @@ import model.BillingSerie;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 
-public interface BillingSerieRepository extends MongoRepository<BillingSerie, String> {
+public interface BillingSerieDao extends MongoRepository<BillingSerie, String> {
 
 
 }
