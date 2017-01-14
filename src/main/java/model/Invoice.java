@@ -14,7 +14,6 @@ public class Invoice {
     private String delegationId;
 
     private Date billingDate;
-    private String vatId;
 
     private String supplierName;
     private String supplierAddress;
@@ -51,13 +50,6 @@ public class Invoice {
         this.billingDate = billingDate;
     }
 
-    public String getVatId() {
-        return vatId;
-    }
-
-    public void setVatId(String vatId) {
-        this.vatId = vatId;
-    }
 
     public String getSupplierName() {
         return supplierName;
