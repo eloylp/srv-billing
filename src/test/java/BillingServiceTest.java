@@ -6,7 +6,6 @@ import repositories.BillingSerieRepository;
 import repositories.InvoiceRepository;
 import service.BillingService;
 
-import java.util.Date;
 import java.util.Objects;
 
 import static org.junit.Assert.assertEquals;
@@ -51,11 +50,8 @@ public class BillingServiceTest {
     @Test
     public void billingOperation() {
         BillingService billingService = getBillingServiceFixture();
-
-        Invoice invoice = new Invoice();
-        invoice.setDescription("This is a description");
-        invoice.setCustomerAddress("Customer address");
-        invoice.setBillingDate(new Date());
+        FixtureFactory fixtureFactory = new FixtureFactory();
+        Invoice invoice = fixtureFactory.getInvoice();
 
         Invoice invoiceret = billingService.makeBillingOperation(invoice);
 
