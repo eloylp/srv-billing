@@ -13,6 +13,8 @@ public class Invoice {
     private String id;
     private String delegationId;
 
+    private BillingSerie billingSerie;
+
     private Date billingDate;
 
     private String supplierName;
@@ -185,5 +187,13 @@ public class Invoice {
 
     public void setDelegationId(String delegationId) {
         this.delegationId = delegationId;
+    }
+
+    public BillingSerie getBillingSerie() {
+        return billingSerie;
+    }
+
+    public void setBillingSerie(BillingSerie billingSerie) {
+        this.billingSerie = billingSerie;
     }
 }
