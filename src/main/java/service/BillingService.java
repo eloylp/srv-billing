@@ -1,5 +1,6 @@
 package service;
 
+import model.BillingSerie;
 import model.Invoice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,9 +22,12 @@ public class BillingService {
 
     public Invoice makeBillingOperation(Invoice invoice) {
 
-        Invoice inv = invoiceRepository.save(invoice);
 
-        return inv;
+        BillingSerie billingSerie = this.billingSerieRepository.getByName(invoice.getBillingSerie().getName());
+
+        invoice.setBillingSerie(billingSerie);
+
+        return invoice;
     }
 
 

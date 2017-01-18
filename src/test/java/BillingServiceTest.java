@@ -18,7 +18,7 @@ import static org.mockito.Mockito.when;
 public class BillingServiceTest {
 
 
-    private BillingService getBillingServiceFixture() {
+    private BillingService getBillingServiceStub() {
 
         InvoiceRepository invoiceRepositoryStub = mock(InvoiceRepository.class);
         when(invoiceRepositoryStub.save(anyObject())).thenAnswer(invocationOnMock -> {
@@ -28,16 +28,26 @@ public class BillingServiceTest {
 
         BillingSerieRepository billingSerieRepositoryStub = mock(BillingSerieRepository.class);
         when(billingSerieRepositoryStub.getByName(anyString())).thenAnswer(invocationOnMock -> {
+
             String serieName = invocationOnMock.getArgumentAt(0, String.class);
-            if (Objects.equals(serieName, "TEST_SERIE_NAME")) {
+
+            if (Objects.equals(serieName, "test_billing_serie_name")) {
                 BillingSerie billingSerie = new BillingSerie();
                 billingSerie.setAutoIncremental(1);
                 billingSerie.setId(serieName);
-                billingSerie.setPrefix("BS");
+                billingSerie.setPrefix("prefix");
                 billingSerie.setHasYear(true);
-                billingSerie.setSuffix("SBS");
+                billingSerie.setSuffix("suffix");
 
                 return billingSerie;
+            } else if (Objects.equals(serieName, "test_billing_serie_name_preinvoce")) {
+                BillingSerie billingSerie = new BillingSerie();
+                billingSerie.setAutoIncremental(1);
+                billingSerie.setId(serieName);
+                billingSerie.setPrefix("PREINVOICE-");
+                billingSerie.setHasYear(true);
+                return billingSerie;
+
             } else {
                 return null;
             }
@@ -48,13 +58,17 @@ public class BillingServiceTest {
     }
 
     @Test
-    public void billingOperation() {
-        BillingService billingService = getBillingServiceFixture();
+    public void billingOperationTreatsPreInvoiceAsIt() {
+
+        BillingService billingService = getBillingServiceStub();
         FixtureFactory fixtureFactory = new FixtureFactory();
         Invoice invoice = fixtureFactory.getInvoice();
+        BillingSerie billingSerie = new BillingSerie();
+        billingSerie.setName("test_billing_serie_name_preinvoce");
+        invoice.setBillingSerie(billingSerie);
 
-        Invoice invoiceret = billingService.makeBillingOperation(invoice);
+        Invoice preinvoice = billingService.makeBillingOperation(invoice);
 
-        assertEquals(invoice.getDescription(), invoiceret.getDescription());
+        assertEquals(preinvoice.getBillingSerie().getPrefix(), "PREINVOICE-");
     }
 }
