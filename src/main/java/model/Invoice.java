@@ -23,11 +23,11 @@ public class Invoice {
     private String supplierEmail;
     private String supplierPhone;
 
-    private String CustomerName;
-    private String CustomerAddress;
-    private String CustomerIdentity;
-    private String CustomerEmail;
-    private String CustomerPhone;
+    private String customerName;
+    private String customerAddress;
+    private String customerIdentity;
+    private String customerEmail;
+    private String customerPhone;
 
     private Date payment;
     private List<Discount> discounts;
@@ -70,19 +70,19 @@ public class Invoice {
     }
 
     public String getCustomerName() {
-        return CustomerName;
+        return customerName;
     }
 
     public void setCustomerName(String customerName) {
-        CustomerName = customerName;
+        this.customerName = customerName;
     }
 
     public String getCustomerAddress() {
-        return CustomerAddress;
+        return customerAddress;
     }
 
     public void setCustomerAddress(String customerAddress) {
-        CustomerAddress = customerAddress;
+        this.customerAddress = customerAddress;
     }
 
     public Date getPayment() {
@@ -150,11 +150,11 @@ public class Invoice {
     }
 
     public String getCustomerIdentity() {
-        return CustomerIdentity;
+        return customerIdentity;
     }
 
     public void setCustomerIdentity(String customerIdentity) {
-        CustomerIdentity = customerIdentity;
+        this.customerIdentity = customerIdentity;
     }
 
     public List<Tax> getTaxes() {
@@ -166,19 +166,19 @@ public class Invoice {
     }
 
     public String getCustomerEmail() {
-        return CustomerEmail;
+        return customerEmail;
     }
 
     public void setCustomerEmail(String customerEmail) {
-        CustomerEmail = customerEmail;
+        this.customerEmail = customerEmail;
     }
 
     public String getCustomerPhone() {
-        return CustomerPhone;
+        return customerPhone;
     }
 
     public void setCustomerPhone(String customerPhone) {
-        CustomerPhone = customerPhone;
+        this.customerPhone = customerPhone;
     }
 
     public String getDelegationId() {
