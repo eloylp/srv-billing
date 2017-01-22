@@ -21,6 +21,7 @@ public class Delegation {
     private String ProFormaBillingSerie;
 
     private List<Tax> taxes;
+    private List<Discount> discounts;
 
     public String getName() {
         return name;
@@ -92,5 +93,13 @@ public class Delegation {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public List<Discount> getDiscounts() {
+        return discounts;
+    }
+
+    public void setDiscounts(List<Discount> discounts) {
+        this.discounts = discounts;
     }
 }
