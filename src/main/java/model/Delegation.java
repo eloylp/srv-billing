@@ -3,6 +3,8 @@ package model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 @Document
 public class Delegation {
 
@@ -14,7 +16,11 @@ public class Delegation {
     private String address;
     private String email;
     private String telephone;
-    private BillingSerie billingSerie;
+
+    private String billingSerie;
+    private String ProFormaBillingSerie;
+
+    private List<Tax> taxes;
 
     public String getName() {
         return name;
@@ -56,11 +62,35 @@ public class Delegation {
         this.telephone = telephone;
     }
 
-    public BillingSerie getBillingSerie() {
+    public String getBillingSerie() {
         return billingSerie;
     }
 
-    public void setBillingSerie(BillingSerie billingSerie) {
+    public void setBillingSerie(String billingSerie) {
         this.billingSerie = billingSerie;
+    }
+
+    public List<Tax> getTaxes() {
+        return taxes;
+    }
+
+    public void setTaxes(List<Tax> taxes) {
+        this.taxes = taxes;
+    }
+
+    public String getProFormaBillingSerie() {
+        return ProFormaBillingSerie;
+    }
+
+    public void setProFormaBillingSerie(String proFormaBillingSerie) {
+        ProFormaBillingSerie = proFormaBillingSerie;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

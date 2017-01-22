@@ -36,6 +36,9 @@ public class Invoice {
     private boolean preInvoice;
     private List<Tax> taxes;
 
+    private String pdf;
+    private String html;
+
     public String getId() {
         return id;
     }
@@ -195,5 +198,21 @@ public class Invoice {
 
     public void setBillingSerie(BillingSerie billingSerie) {
         this.billingSerie = billingSerie;
+    }
+
+    public String getPdf() {
+        return pdf;
+    }
+
+    public void setPdf(String pdf) {
+        this.pdf = pdf;
+    }
+
+    public String getHtml() {
+        return html;
+    }
+
+    public void setHtml(String html) {
+        this.html = html;
     }
 }
