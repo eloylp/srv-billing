@@ -11,22 +11,31 @@ import service.BillingService;
 
 
 @RestController
-class InvoicesController {
+class BillingController {
 
     private BillingService billingService;
 
     @Autowired
-    InvoicesController(BillingService billingService) {
+    BillingController(BillingService billingService) {
         this.billingService = billingService;
 
     }
 
-    @PreAuthorize("#oauth2.hasScope('read')")
-    @RequestMapping(value = "/invoices", method = RequestMethod.GET)
-    public Invoice invoice() {
+    @PreAuthorize("#oauth2.hasScope('billing')")
+    @RequestMapping(value = "/billing", method = RequestMethod.POST)
+    public Invoice billing() {
 
         Invoice invoice = new Invoice();
         billingService.makeBillingOperation(invoice);
+        return invoice;
+    }
+
+    @PreAuthorize("#oauth2.hasScope('billing')")
+    @RequestMapping(value = "/installment", method = RequestMethod.POST)
+    public Invoice installment() {
+
+        Invoice invoice = new Invoice();
+        billingService.makeInstallmentOperation(invoice);
         return invoice;
     }
 

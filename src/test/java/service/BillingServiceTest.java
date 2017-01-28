@@ -1,14 +1,15 @@
+package service;
 
+import managers.BillingSerieManager;
+import managers.DelegationManager;
+import managers.InvoiceManager;
 import model.BillingSerie;
+import model.Delegation;
 import model.Invoice;
 import org.junit.Test;
-import repositories.BillingSerieRepository;
-import repositories.InvoiceRepository;
-import service.BillingService;
 
 import java.util.Objects;
 
-import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.anyObject;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
@@ -20,14 +21,19 @@ public class BillingServiceTest {
 
     private BillingService getBillingServiceStub() {
 
-        InvoiceRepository invoiceRepositoryStub = mock(InvoiceRepository.class);
-        when(invoiceRepositoryStub.save(anyObject())).thenAnswer(invocationOnMock -> {
-            Invoice invoice = invocationOnMock.getArgumentAt(0, Invoice.class);
-            return invoice;
+        InvoiceManager invoiceManager = mock(InvoiceManager.class);
+        when(invoiceManager.save(anyObject())).thenAnswer(invocationOnMock -> {
+            return invocationOnMock.getArgumentAt(0, Invoice.class);
         });
 
-        BillingSerieRepository billingSerieRepositoryStub = mock(BillingSerieRepository.class);
-        when(billingSerieRepositoryStub.getByName(anyString())).thenAnswer(invocationOnMock -> {
+        DelegationManager delegationManager = mock(DelegationManager.class);
+        when(delegationManager.getByName(anyString())).thenAnswer(invocationOnMock -> {
+
+            return new Delegation();
+        });
+
+        BillingSerieManager billingSerieManager = mock(BillingSerieManager.class);
+        when(billingSerieManager.getByName(anyString())).thenAnswer(invocationOnMock -> {
 
             String serieName = invocationOnMock.getArgumentAt(0, String.class);
 
@@ -54,21 +60,11 @@ public class BillingServiceTest {
 
         });
 
-        return new BillingService(invoiceRepositoryStub, billingSerieRepositoryStub);
+        return new BillingService(billingSerieManager, delegationManager, invoiceManager);
     }
 
     @Test
     public void billingOperationTreatsPreInvoiceAsIt() {
 
-        BillingService billingService = getBillingServiceStub();
-        FixtureFactory fixtureFactory = new FixtureFactory();
-        Invoice invoice = fixtureFactory.getInvoice();
-        BillingSerie billingSerie = new BillingSerie();
-        billingSerie.setName("test_billing_serie_name_preinvoce");
-        invoice.setBillingSerie(billingSerie);
-
-        Invoice preinvoice = billingService.makeBillingOperation(invoice);
-
-        assertEquals(preinvoice.getBillingSerie().getPrefix(), "PREINVOICE-");
     }
 }

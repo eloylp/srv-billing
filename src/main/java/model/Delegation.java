@@ -20,6 +20,10 @@ public class Delegation {
     private String billingSerie;
     private String ProFormaBillingSerie;
 
+    private String invoiceTemplate;
+
+    private boolean active;
+
     private List<Tax> taxes;
     private List<Discount> discounts;
 
@@ -101,5 +105,21 @@ public class Delegation {
 
     public void setDiscounts(List<Discount> discounts) {
         this.discounts = discounts;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public String getInvoiceTemplate() {
+        return invoiceTemplate;
+    }
+
+    public void setInvoiceTemplate(String invoiceTemplate) {
+        this.invoiceTemplate = invoiceTemplate;
     }
 }

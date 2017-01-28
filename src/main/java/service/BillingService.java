@@ -1,31 +1,36 @@
 package service;
 
-import model.BillingSerie;
+import managers.BillingSerieManager;
+import managers.DelegationManager;
+import managers.InvoiceManager;
 import model.Invoice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import repositories.BillingSerieRepository;
-import repositories.InvoiceRepository;
 
 
 @Component
 public class BillingService {
 
-    private InvoiceRepository invoiceRepository;
-    private BillingSerieRepository billingSerieRepository;
+    private final BillingSerieManager billingSerieManager;
+    private final DelegationManager delegationManager;
+    private final InvoiceManager invoiceManager;
 
     @Autowired
-    public BillingService(InvoiceRepository invoiceRepository, BillingSerieRepository billingSerieRepository) {
-        this.invoiceRepository = invoiceRepository;
-        this.billingSerieRepository = billingSerieRepository;
+    public BillingService(BillingSerieManager billingSerieManager, DelegationManager delegationManager,
+                          InvoiceManager invoiceManager) {
+        this.billingSerieManager = billingSerieManager;
+        this.delegationManager = delegationManager;
+        this.invoiceManager = invoiceManager;
     }
+
 
     public Invoice makeBillingOperation(Invoice invoice) {
 
+        return invoice;
+    }
 
-        BillingSerie billingSerie = this.billingSerieRepository.getByName(invoice.getBillingSerie().getName());
 
-        invoice.setBillingSerie(billingSerie);
+    public Invoice makeInstallmentOperation(Invoice invoice) {
 
         return invoice;
     }
