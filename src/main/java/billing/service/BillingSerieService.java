@@ -1,7 +1,7 @@
-package service;
+package billing.service;
 
-import managers.BillingSerieManager;
-import model.BillingSerie;
+import billing.manager.BillingSerieManager;
+import billing.model.BillingSerie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -1,15 +1,17 @@
 package service;
 
-import managers.BillingSerieManager;
-import managers.DelegationManager;
-import managers.InvoiceManager;
-import model.BillingSerie;
-import model.Delegation;
-import model.Invoice;
+import billing.manager.BillingSerieManager;
+import billing.manager.DelegationManager;
+import billing.manager.InvoiceManager;
+import billing.model.BillingSerie;
+import billing.model.Delegation;
+import billing.model.Invoice;
+import billing.service.BillingService;
 import org.junit.Test;
 
 import java.util.Objects;
 
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.anyObject;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
@@ -66,5 +68,11 @@ public class BillingServiceTest {
     @Test
     public void billingOperationTreatsPreInvoiceAsIt() {
 
+        FixtureFactory fixtureFactory = new FixtureFactory();
+        BillingService billingService = this.getBillingServiceStub();
+        Invoice invoice = fixtureFactory.getInvoice();
+        invoice.setPreInvoice(true);
+        Invoice result = billingService.makeBillingOperation(invoice);
+        assertTrue(result.isPreInvoice());
     }
 }

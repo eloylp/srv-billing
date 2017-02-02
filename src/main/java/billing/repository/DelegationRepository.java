@@ -1,7 +1,7 @@
-package repositories;
+package billing.repository;
 
-import dao.DelegationDao;
-import model.Delegation;
+import billing.dao.DelegationDao;
+import billing.model.Delegation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

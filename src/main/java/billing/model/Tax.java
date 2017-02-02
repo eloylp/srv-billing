@@ -1,4 +1,4 @@
-package model;
+package billing.model;
 
 
 public class Tax {

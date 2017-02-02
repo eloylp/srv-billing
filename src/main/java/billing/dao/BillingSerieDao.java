@@ -1,6 +1,6 @@
-package dao;
+package billing.dao;
 
-import model.BillingSerie;
+import billing.model.BillingSerie;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 

@@ -1,9 +1,10 @@
-package service;
+package billing.service;
 
-import managers.BillingSerieManager;
-import managers.DelegationManager;
-import managers.InvoiceManager;
-import model.Invoice;
+import billing.manager.BillingSerieManager;
+import billing.manager.DelegationManager;
+import billing.manager.InvoiceManager;
+import billing.model.Delegation;
+import billing.model.Invoice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -25,6 +26,13 @@ public class BillingService {
 
 
     public Invoice makeBillingOperation(Invoice invoice) {
+
+        Delegation delegation = this.delegationManager.getByName(invoice.getDelegationId());
+
+        if (delegation == null) {
+
+            //throw new Exception("ds");
+        }
 
         return invoice;
     }

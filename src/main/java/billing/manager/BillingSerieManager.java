@@ -1,9 +1,9 @@
-package managers;
+package billing.manager;
 
-import model.BillingSerie;
+import billing.model.BillingSerie;
+import billing.repository.BillingSerieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import repositories.BillingSerieRepository;
 
 import java.util.ArrayList;
 import java.util.List;

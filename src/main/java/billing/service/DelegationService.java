@@ -1,7 +1,7 @@
-package service;
+package billing.service;
 
-import managers.DelegationManager;
-import model.Delegation;
+import billing.manager.DelegationManager;
+import billing.model.Delegation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

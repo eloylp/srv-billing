@@ -1,4 +1,4 @@
-package managers;
+package billing.manager;
 
 import org.springframework.stereotype.Component;
 

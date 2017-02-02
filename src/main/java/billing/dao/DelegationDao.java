@@ -1,6 +1,6 @@
-package dao;
+package billing.dao;
 
-import model.Delegation;
+import billing.model.Delegation;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 

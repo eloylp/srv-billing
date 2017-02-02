@@ -1,7 +1,9 @@
-import model.Discount;
-import model.Invoice;
-import model.Product;
-import model.Tax;
+package service;
+
+import billing.model.Discount;
+import billing.model.Invoice;
+import billing.model.Product;
+import billing.model.Tax;
 
 import java.util.ArrayList;
 import java.util.Date;
