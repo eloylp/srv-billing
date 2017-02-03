@@ -1,4 +1,4 @@
-package billing.service;
+package billing;
 
 
 import billing.manager.InvoiceManager;

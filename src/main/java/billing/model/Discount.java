@@ -3,9 +3,20 @@ package billing.model;
 
 public class Discount {
 
-    private String title;
 
+    private String name;
     private double percent;
+
+    public Discount() {
+
+    }
+
+    public Discount(String name, double percent) {
+
+        this.setName(name);
+        this.setPercent(percent);
+
+    }
 
     public double getPercent() {
         return percent;
@@ -15,11 +26,11 @@ public class Discount {
         this.percent = percent;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 }

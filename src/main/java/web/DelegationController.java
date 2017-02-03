@@ -1,8 +1,8 @@
 package web;
 
 
+import billing.DelegationService;
 import billing.model.Delegation;
-import billing.service.DelegationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;

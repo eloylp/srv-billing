@@ -1,5 +1,6 @@
-package billing.service;
+package billing;
 
+import billing.exception.BillingException;
 import billing.manager.BillingSerieManager;
 import billing.manager.DelegationManager;
 import billing.manager.InvoiceManager;
@@ -25,14 +26,15 @@ public class BillingService {
     }
 
 
-    public Invoice makeBillingOperation(Invoice invoice) {
+    public Invoice makeBillingOperation(Invoice invoice) throws BillingException {
 
         Delegation delegation = this.delegationManager.getByName(invoice.getDelegationId());
 
         if (delegation == null) {
 
-            //throw new Exception("ds");
+            throw new BillingException();
         }
+
 
         return invoice;
     }

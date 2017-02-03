@@ -1,8 +1,9 @@
 package web;
 
 
+import billing.BillingService;
+import billing.exception.BillingException;
 import billing.model.Invoice;
-import billing.service.BillingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +27,11 @@ class BillingController {
     public Invoice billing() {
 
         Invoice invoice = new Invoice();
-        billingService.makeBillingOperation(invoice);
+        try {
+            billingService.makeBillingOperation(invoice);
+        } catch (BillingException e) {
+            e.printStackTrace();
+        }
         return invoice;
     }
 

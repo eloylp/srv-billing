@@ -1,8 +1,8 @@
 package web;
 
 
+import billing.InvoiceService;
 import billing.model.Invoice;
-import billing.service.InvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;

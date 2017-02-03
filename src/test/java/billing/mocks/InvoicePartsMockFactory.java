@@ -1,4 +1,4 @@
-package service;
+package billing.mocks;
 
 import billing.model.Discount;
 import billing.model.Invoice;
@@ -10,12 +10,12 @@ import java.util.Date;
 import java.util.List;
 
 
-public class FixtureFactory {
+public class InvoicePartsMockFactory {
 
     public Discount getDiscount() {
         Discount discount = new Discount();
         discount.setPercent(5.00);
-        discount.setTitle("A 5% general discount.");
+        discount.setName("A 5% general discount.");
 
         return discount;
     }
@@ -45,20 +45,12 @@ public class FixtureFactory {
 
     public Tax getIvaTax() {
 
-        Tax tax = new Tax();
-        tax.setPercent(21.00);
-        tax.setName("IVA");
-
-        return tax;
+        return new Tax("IVA", 21.00);
     }
 
     public Tax getTrxTax() {
 
-        Tax tax = new Tax();
-        tax.setPercent(3.00);
-        tax.setName("TRX");
-
-        return tax;
+        return new Tax("TRX", 3.00);
     }
 
     public Invoice getInvoice() {
