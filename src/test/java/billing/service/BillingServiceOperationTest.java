@@ -59,7 +59,6 @@ public class BillingServiceOperationTest {
 
     @Test
     public void whenInvoiceIsProformProformSerieIsAdquired() throws BillingDelegationNotFoundException {
-/// TODO , USE VERIDY TO TEST WHOMETHOD WAS CALLED.
         this.invoice.setPreInvoice(true);
         Invoice resultantInvoice = this.billingService.makeBillingOperation(this.invoice);
         verify(this.delegation, atLeastOnce()).getProFormaBillingSerie();
@@ -68,7 +67,6 @@ public class BillingServiceOperationTest {
 
     @Test
     public void whenInvoiceIsRealRealSerieIsAdquired() throws BillingDelegationNotFoundException {
-/// TODO , USE VERIDY TO TEST WHOMETHOD WAS CALLED.
 
         this.invoice.setPreInvoice(false);
         Invoice resultantInvoice = this.billingService.makeBillingOperation(this.invoice);
