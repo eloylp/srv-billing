@@ -2,7 +2,7 @@ package web;
 
 
 import billing.BillingService;
-import billing.exception.BillingException;
+import billing.exception.BillingDelegationNotFoundException;
 import billing.model.Invoice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -29,7 +29,7 @@ class BillingController {
         Invoice invoice = new Invoice();
         try {
             billingService.makeBillingOperation(invoice);
-        } catch (BillingException e) {
+        } catch (BillingDelegationNotFoundException e) {
             e.printStackTrace();
         }
         return invoice;

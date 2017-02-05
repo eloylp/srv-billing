@@ -11,11 +11,13 @@ public class Invoice {
 
     @Id
     private String id;
-    private String delegationId;
+    private String delegationName;
 
     private BillingSerie billingSerie;
 
     private Date billingDate;
+
+    private boolean mustBeMailed;
 
     private String supplierName;
     private String supplierAddress;
@@ -184,12 +186,12 @@ public class Invoice {
         this.customerPhone = customerPhone;
     }
 
-    public String getDelegationId() {
-        return delegationId;
+    public String getDelegationName() {
+        return delegationName;
     }
 
-    public void setDelegationId(String delegationId) {
-        this.delegationId = delegationId;
+    public void setDelegationName(String delegationName) {
+        this.delegationName = delegationName;
     }
 
     public BillingSerie getBillingSerie() {
@@ -214,5 +216,13 @@ public class Invoice {
 
     public void setHtml(String html) {
         this.html = html;
+    }
+
+    public boolean isMustBeMailed() {
+        return mustBeMailed;
+    }
+
+    public void setMustBeMailed(boolean mustBeMailed) {
+        this.mustBeMailed = mustBeMailed;
     }
 }

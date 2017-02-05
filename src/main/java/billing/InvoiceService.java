@@ -1,7 +1,7 @@
 package billing;
 
 
-import billing.manager.InvoiceManager;
+import billing.manager.invoice.InvoiceManager;
 import billing.model.Invoice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

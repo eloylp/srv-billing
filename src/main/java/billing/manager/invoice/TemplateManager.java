@@ -1,10 +1,10 @@
-package billing.manager;
+package billing.manager.invoice;
 
 import org.springframework.stereotype.Component;
 
 
 @Component
-public class TemplateManager {
+class TemplateManager {
 
 
 }

@@ -1,5 +1,7 @@
-package billing.manager;
+package billing.manager.invoice;
 
+import billing.model.BillingSerie;
+import billing.model.Delegation;
 import billing.model.Invoice;
 import billing.repository.InvoiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,20 @@ public class InvoiceManager {
     public Invoice save(Invoice invoice) {
 
         return invoice;
+    }
+
+    public boolean mailInvoice(Invoice invoice) {
+
+        this.mailManager.mailHtml("sd");
+
+        return true;
+    }
+
+    /// TODO PERHAPS MAY BE IN ONE OBJECT ? INTEAD OF THREE PARAMS  ?
+    public Invoice performBillingOperations(Invoice invoice, Delegation delegation, BillingSerie billingSerie) {
+
+        return invoice;
+
     }
 
 

@@ -23,7 +23,7 @@ public class DelegationManager {
         return this.delegationRepository.getByName("ed");
     }
 
-    public Delegation getByName(String delegtionName) {
+    public Delegation getByName(String delegationName) {
 
         return new Delegation();
     }
