@@ -1,4 +1,4 @@
-package billing.mocks;
+package billing.service.mocks;
 
 import billing.model.BillingSerie;
 
@@ -12,6 +12,7 @@ public class BillingSerieMockFactory {
 
         BillingSerie billingSerie = new BillingSerie();
         billingSerie.setAutoIncremental(1);
+        billingSerie.setName("test_billing_serie_name");
         billingSerie.setId("test_billing_serie_name");
         billingSerie.setPrefix("prefix");
         billingSerie.setHasYear(true);
@@ -25,8 +26,10 @@ public class BillingSerieMockFactory {
 
         BillingSerie billingSerie = new BillingSerie();
         billingSerie.setAutoIncremental(1);
+        billingSerie.setName("test_billing_serie_name_preinvoce");
         billingSerie.setId("test_billing_serie_name_preinvoce");
         billingSerie.setPrefix("PREINVOICE-");
+        billingSerie.setSuffix("suffix");
         billingSerie.setHasYear(true);
 
         return billingSerie;

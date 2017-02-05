@@ -1,8 +1,8 @@
-package billing.mocks;
+package billing.service.mocks;
 
 import billing.manager.BillingSerieManager;
 import billing.manager.DelegationManager;
-import billing.manager.InvoiceManager;
+import billing.manager.invoice.InvoiceManager;
 import billing.model.Delegation;
 import billing.model.Invoice;
 
@@ -42,16 +42,15 @@ public class ManagersMockFactory {
         return billingSerieManager;
     }
 
-    public DelegationManager getDelegationManager() {
+    public DelegationManager getDelegationManager(Delegation delegation) {
 
         DelegationManager delegationManager = mock(DelegationManager.class);
         when(delegationManager.getByName(anyString())).thenAnswer(invocationOnMock -> {
 
             String delegationName = invocationOnMock.getArgumentAt(0, String.class);
 
-            if (delegationName == "delegation_name") {
+            if (Objects.equals(delegationName, delegation.getName())) {
 
-                Delegation delegation = new DelegationMockFactory().getDelegation();
                 return delegation;
 
             } else {
@@ -67,6 +66,14 @@ public class ManagersMockFactory {
         InvoiceManager invoiceManager = mock(InvoiceManager.class);
         when(invoiceManager.save(anyObject())).thenAnswer(invocationOnMock -> {
             return invocationOnMock.getArgumentAt(0, Invoice.class);
+        });
+
+        when(invoiceManager.performBillingOperations(anyObject(), anyObject(), anyObject())).thenAnswer(invocationOnMock -> {
+            return invocationOnMock.getArgumentAt(0, Invoice.class);
+        });
+
+        when(invoiceManager.mailInvoice(anyObject())).thenAnswer(invocationOnMock -> {
+            return true;
         });
 
         return invoiceManager;

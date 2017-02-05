@@ -1,4 +1,4 @@
-package billing.mocks;
+package billing.service.mocks;
 
 import billing.model.Discount;
 import billing.model.Invoice;
@@ -54,11 +54,12 @@ public class InvoicePartsMockFactory {
     }
 
     public Invoice getInvoice() {
+
         Invoice invoice = new Invoice();
         invoice.setId("af123");
         invoice.setDescription("description");
         invoice.setBillingDate(new Date());
-        invoice.setDelegationId("delegation_id");
+        invoice.setDelegationName("delegation_name");
         invoice.setPreInvoice(true);
         invoice.setPayment(new Date());
 

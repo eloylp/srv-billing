@@ -1,4 +1,4 @@
-package billing.mocks;
+package billing.service.mocks;
 
 import billing.model.Delegation;
 import billing.model.Discount;
@@ -23,8 +23,8 @@ public class DelegationMockFactory {
         delegation.setIdentity("123456678B");
         delegation.setActive(true);
         delegation.setAddress("delegation_address");
-        delegation.setBillingSerie("billing_serire");
-        delegation.setProFormaBillingSerie("proforma_billing_serie");
+        delegation.setBillingSerie("test_billing_serie_name");
+        delegation.setProFormaBillingSerie("test_billing_serie_name_preinvoce");
         delegation.setTelephone("delegation_tlf");
         delegation.setInvoiceTemplate("delegation_invoice_template");
 
