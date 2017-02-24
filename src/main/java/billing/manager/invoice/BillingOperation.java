@@ -1,7 +1,12 @@
 package billing.manager.invoice;
 
-/**
- * Created by eloylp on 5/02/17.
- */
+import billing.model.Invoice;
+
 class BillingOperation {
+
+    public Invoice make(Invoice invoice){
+
+        return invoice;
+    }
+
 }
