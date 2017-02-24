@@ -41,6 +41,9 @@ public class Invoice {
     private String pdf;
     private String html;
 
+    private float subTotal;
+    private float total;
+
     public String getId() {
         return id;
     }
@@ -224,5 +227,21 @@ public class Invoice {
 
     public void setMustBeMailed(boolean mustBeMailed) {
         this.mustBeMailed = mustBeMailed;
+    }
+
+    public float getSubTotal() {
+        return subTotal;
+    }
+
+    public void setSubTotal(float subTotal) {
+        this.subTotal = subTotal;
+    }
+
+    public float getTotal() {
+        return total;
+    }
+
+    public void setTotal(float total) {
+        this.total = total;
     }
 }
