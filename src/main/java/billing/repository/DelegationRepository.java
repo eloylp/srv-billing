@@ -1,7 +1,7 @@
 package billing.repository;
 
-import billing.dao.DelegationDao;
-import billing.model.Delegation;
+import billing.domain.Delegation;
+import billing.infrastructure.springmongo.DelegationDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;

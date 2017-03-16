@@ -1,7 +1,7 @@
 package billing.repository;
 
-import billing.dao.BillingSerieDao;
-import billing.model.BillingSerie;
+import billing.domain.BillingSerie;
+import billing.infrastructure.springmongo.BillingSerieDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

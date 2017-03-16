@@ -1,7 +1,7 @@
 package billing.repository;
 
-import billing.dao.InvoiceDao;
-import billing.model.Invoice;
+import billing.domain.Invoice;
+import billing.infrastructure.springmongo.InvoiceDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
