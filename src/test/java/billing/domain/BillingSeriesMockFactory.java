@@ -1,7 +1,7 @@
 package billing.domain;
 
 
-public class BillingSerieMockFactory {
+public class BillingSeriesMockFactory {
 
 
     public BillingSerie getBillingSerie() {
@@ -12,7 +12,7 @@ public class BillingSerieMockFactory {
         billingSerie.setId("test_billing_serie_name");
         billingSerie.setPrefix("prefix");
         billingSerie.setHasYear(true);
-        billingSerie.setSuffix("suffix");k
+        billingSerie.setSuffix("suffix");
 
         return billingSerie;
 
