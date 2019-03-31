@@ -12,7 +12,7 @@ public class BillingSerieMockFactory {
         billingSerie.setId("test_billing_serie_name");
         billingSerie.setPrefix("prefix");
         billingSerie.setHasYear(true);
-        billingSerie.setSuffix("suffix");
+        billingSerie.setSuffix("suffix");k
 
         return billingSerie;
 

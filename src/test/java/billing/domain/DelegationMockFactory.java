@@ -3,9 +3,7 @@ package billing.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by eloylp on 3/02/17.
- */
+
 public class DelegationMockFactory {
 
 
