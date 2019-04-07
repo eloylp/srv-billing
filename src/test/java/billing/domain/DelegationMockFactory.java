@@ -7,7 +7,7 @@ import java.util.List;
 public class DelegationMockFactory {
 
 
-    public Delegation getDelegation() {
+    public Delegation getDelegation() throws BillingException {
 
         Delegation delegation = new Delegation();
 
@@ -23,7 +23,7 @@ public class DelegationMockFactory {
         delegation.setInvoiceTemplate("delegation_invoice_template");
 
         List<Tax> taxes = new ArrayList<>();
-        taxes.add(new Tax("IVA", 21.00));
+        taxes.add(new Tax("IVA", new Value(21.00)));
         delegation.setTaxes(taxes);
 
         List<Discount> discounts = new ArrayList<>();

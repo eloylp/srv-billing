@@ -38,17 +38,17 @@ public class InvoicePartsMockFactory {
         return drone;
     }
 
-    public Tax getIvaTax() {
+    public Tax getIvaTax() throws BillingException {
 
-        return new Tax("IVA", 21.00);
+        return new Tax("IVA", new Value(21.00));
     }
 
-    public Tax getTrxTax() {
+    public Tax getTrxTax() throws BillingException {
 
-        return new Tax("TRX", 3.00);
+        return new Tax("TRX", new Value(3.00));
     }
 
-    public Invoice getInvoice() {
+    public Invoice getInvoice() throws BillingException {
 
         Invoice invoice = new Invoice();
         invoice.setId("af123");
