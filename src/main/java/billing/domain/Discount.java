@@ -3,34 +3,34 @@ package billing.domain;
 
 public class Discount {
 
-
     private String name;
-    private double percent;
+    private Value percent;
 
-    public Discount() {
-
-    }
-
-    public Discount(String name, double percent) {
-
+    Discount(String name, Value percent) throws BillingException {
         this.setName(name);
         this.setPercent(percent);
-
-    }
-
-    public double getPercent() {
-        return percent;
-    }
-
-    public void setPercent(double percent) {
-        this.percent = percent;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    private void setName(String name) {
         this.name = name;
+    }
+
+    public Value getPercent() {
+        return percent;
+    }
+
+    private void setPercent(Value percent) throws BillingException {
+        checkNonNegativeValue(percent);
+        this.percent = percent;
+    }
+
+    private void checkNonNegativeValue(Value percent) throws BillingException {
+        if (percent.compareTo(new Value(0)) < 0) {
+            throw new NegativeNumberException(percent);
+        }
     }
 }
