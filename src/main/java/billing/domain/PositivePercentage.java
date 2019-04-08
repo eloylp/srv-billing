@@ -28,7 +28,7 @@ abstract class PositivePercentage {
     }
 
     private void checkNonNegativeValue(Value percent) throws BillingException {
-        if (percent.compareTo(new Value(0)) < 0) {
+        if (percent == null || percent.compareTo(new Value(0)) < 0) {
             throw new NegativeNumberException(percent);
         }
     }

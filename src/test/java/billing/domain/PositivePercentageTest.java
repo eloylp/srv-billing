@@ -1,5 +1,6 @@
 package billing.domain;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -30,5 +31,10 @@ class PositivePercentageTest {
     @ValueSource(strings = {"", ""})
     void testAcceptedValues(String value) throws BillingException {
         new ConcretePercentage(value, new Value(1));
+    }
+
+    @Test
+    void testNullDiscarded() {
+        assertThrows(NegativeNumberException.class, () -> new ConcretePercentage("tax", null));
     }
 }
