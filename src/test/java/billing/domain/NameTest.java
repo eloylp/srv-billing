@@ -22,7 +22,7 @@ class NameTest {
     }
 
     @Test
-    void testNoNullAccepted() {
+    void testNullDiscarded() {
         assertThrows(InvalidNameException.class, () -> new Name(null));
 
     }
