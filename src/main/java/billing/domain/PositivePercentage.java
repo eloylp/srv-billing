@@ -2,19 +2,19 @@ package billing.domain;
 
 abstract class PositivePercentage {
 
-    private String name;
+    private Name name;
     private Value percent;
 
-    PositivePercentage(String name, Value percent) throws BillingException {
+    PositivePercentage(Name name, Value percent) throws NegativeNumberException {
         this.setName(name);
         this.setPercent(percent);
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 
-    private void setName(String name) {
+    private void setName(Name name) {
         this.name = name;
     }
 
@@ -22,12 +22,12 @@ abstract class PositivePercentage {
         return percent;
     }
 
-    private void setPercent(Value percent) throws BillingException {
+    private void setPercent(Value percent) throws NegativeNumberException {
         checkNonNegativeValue(percent);
         this.percent = percent;
     }
 
-    private void checkNonNegativeValue(Value percent) throws BillingException {
+    private void checkNonNegativeValue(Value percent) throws NegativeNumberException {
         if (percent == null || percent.compareTo(new Value(0)) < 0) {
             throw new NegativeNumberException(percent);
         }
