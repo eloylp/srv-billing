@@ -9,7 +9,7 @@ public class Invoice {
     private String id;
     private String delegationName;
 
-    private BillingSerie billingSerie;
+    private BillingSequence billingSeries;
 
     private Date billingDate;
 
@@ -193,12 +193,12 @@ public class Invoice {
         this.delegationName = delegationName;
     }
 
-    public BillingSerie getBillingSerie() {
-        return billingSerie;
+    public BillingSequence getBillingSeries() {
+        return billingSeries;
     }
 
-    public void setBillingSerie(BillingSerie billingSerie) {
-        this.billingSerie = billingSerie;
+    public void setBillingSeries(BillingSequence billingSeries) {
+        this.billingSeries = billingSeries;
     }
 
     public String getPdf() {
