@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class PositivePercentageTest {
@@ -30,5 +31,11 @@ class PositivePercentageTest {
     @Test
     void testNullDiscarded() {
         assertThrows(NegativeNumberException.class, () -> new ConcretePercentage(new Name("name"), null));
+    }
+
+    @Test
+    void testOnCreationUuidIsGenerated() throws NegativeNumberException, InvalidNameException {
+        var percentage = new ConcretePercentage(new Name("Name"), new Value(0.34));
+        assertNotNull(percentage.getUuid());
     }
 }
