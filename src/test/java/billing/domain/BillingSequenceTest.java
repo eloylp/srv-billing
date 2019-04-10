@@ -1,5 +1,6 @@
 package billing.domain;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
@@ -18,7 +19,7 @@ class BillingSequenceTest {
             "PRE,SUFFIX,-, PRE,SUFFIX,-",
             "PRE,SUFFIX,/, PRE,SUFFIX,/",
     })
-    void testSequence(ArgumentsAccessor aP) {
+    void testSequence(ArgumentsAccessor aP) throws InvalidNameException {
 
         var prefix = aP.getString(0);
         var suffix = aP.getString(1);
@@ -28,7 +29,7 @@ class BillingSequenceTest {
         var expectedSuffix = aP.getString(4);
         var expectedDelimiter = aP.getString(5);
 
-        var sequence = new BillingSequence(prefix, suffix, delimiter);
+        var sequence = new BillingSequence(new Name("name"), prefix, suffix, delimiter);
 
         assertEquals(sequence.getPrefix(), expectedPrefix);
         assertEquals(sequence.getSuffix(), expectedSuffix);
@@ -40,8 +41,8 @@ class BillingSequenceTest {
     }
 
     @Test
-    void testTrimmingOfElements() {
-        var sequence = new BillingSequence("  PRE    ", "  SUFFIX  ", "  -   ");
+    void testTrimmingOfElements() throws InvalidNameException {
+        var sequence = new BillingSequence(new Name("name"), "  PRE    ", "  SUFFIX  ", "  -   ");
         var expectedPrefix = "PRE";
         var expectedSuffix = "SUFFIX";
         var expectedDelimiter = "-";
@@ -55,4 +56,15 @@ class BillingSequenceTest {
         assertEquals(expectedResult, sequence.toString());
     }
 
+    @Test
+    void testUuidIsGeneratedOnCreation() throws InvalidNameException {
+        var sequence = new BillingSequence(new Name("name"), "p", "s", "-");
+        assertNotNull(sequence.getUuid());
+    }
+
+    @Test
+    void testExceptionOnNullName() {
+        Assertions.assertThrows(InvalidNameException.class, () ->
+                new BillingSequence(null, "p", "s", "-"));
+    }
 }
